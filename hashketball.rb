@@ -96,14 +96,7 @@ def game_hash
 game_hash
 end
 
-def num_points_scored (playername)
-  points = 0
-game_hash.each do |loc,val|   
-  val.each do |k, pnames|
-    if k == :players 
-      pnames.each do |names, stats|
-        if names == playername
-          stats.each do |stat, value|
+
           
 
 
