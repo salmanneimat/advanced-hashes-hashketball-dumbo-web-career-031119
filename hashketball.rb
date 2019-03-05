@@ -230,7 +230,7 @@ def big_shoe_rebounds
   splitarray.flatten!
   splitarray[-1]
 end
-          
+  end        
 
 
 
