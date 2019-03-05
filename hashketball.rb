@@ -96,9 +96,142 @@ def game_hash
 game_hash
 end
 
+def num_points_scored(playername)
+  points = 0
+  game_hash.each do |key,val|
+    val.each do |k,pnames|
+      if k == :players
+        pnames.each do |names,stats|
+          if names == playername
+            stats.each do |stat,value|
+              if stat == :points
+                points = value
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  points
+end
 
+def shoe_size(playername)
+  size = 0
+  game_hash.each do |key,val|
+    val.each do |k,pnames|
+      if k == :players
+        pnames.each do |names,stats|
+          if names == playername
+            stats.each do |stat,value|
+              if stat == :shoe
+                size = value
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  size
+end
+
+def team_colors(teamname)
+  color_array=[]
+  if game_hash[:home][:team_name]==teamname
+    color_array = game_hash[:home][:colors]
+  elsif game_hash[:away][:team_name]==teamname
+    color_array = game_hash[:away][:colors]
+  else
+    puts "That team is not in this game."
+  end
+  color_array
+end
+
+def team_names
+  team_name_array = []
+  game_hash.each do |key,val|
+    val.each do |k,v|
+      if k == :team_name
+        team_name_array << v
+      end
+    end
+  end
+  team_name_array
+end
+
+def player_numbers(teamname)
+  jerseys=[]
+  if game_hash[:home][:team_name]==teamname
+      game_hash[:home].each do |k,pnames|
+        if k == :players
+          pnames.each do |names,stats|
+            stats.each do |stat,value|
+                if stat == :number
+                  jerseys << value
+                end
+              end
+            end
+          end
+        end
+  elsif game_hash[:away][:team_name]==teamname
+    game_hash[:away].each do |k,pnames|
+      if k == :players
+        pnames.each do |names,stats|
+          stats.each do |stat,value|
+              if stat == :number
+                jerseys << value
+              end
+            end
+          end
+        end
+      end
+  else
+    puts "That team is not in this game."
+  end
+  jerseys
+end
+
+def player_stats(playername)
+  stats = {}
+  if game_hash[:home][:players].keys.include?(playername)
+    stats = game_hash[:home][:players][playername]
+  elsif game_hash[:away][:players].keys.include?(playername)
+    stats = game_hash[:away][:players][playername]
+  else
+    puts "That player is not in this game."
+  end
+  stats
+end
+
+def big_shoe_rebounds
+  bigarray = []
+  splitarray = []
+  game_hash.each do |key,va|
+    val.each do |k,pnames|
+      if k == :players
+        pnames.each do |names,stats|
+          #bigarray << names
+            stats.each do |stat,value|
+              if stat == :shoe
+                bigarray << value
+              end
+              if stat == :rebounds
+                bigarray << value
+              end
+            end
+          end
+        end
+      endpra12
+    end
+  bigarray
+  splitarray = bigarray.each_slice(2).to_a
+  splitarray.sort!
+  splitarray.flatten!
+  splitarray[-1]
+end
           
-
+puts big_shoe_rebounds
 
 
 
