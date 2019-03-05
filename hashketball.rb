@@ -222,7 +222,7 @@ def big_shoe_rebounds
             end
           end
         end
-      bigshoe
+      big_shoe_rebounds
     end
   bigarray
   splitarray = bigarray.each_slice(2).to_a
