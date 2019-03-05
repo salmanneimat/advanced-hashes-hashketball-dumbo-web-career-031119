@@ -231,7 +231,6 @@ def big_shoe_rebounds
   splitarray[-1]
 end
           
-puts big_shoe_rebounds
 
 
 
