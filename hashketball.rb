@@ -207,7 +207,7 @@ end
 def big_shoe_rebounds
   bigarray = []
   splitarray = []
-  game_hash.each do |key,va|
+  game_hash.each do |key,val|
     val.each do |k,pnames|
       if k == :players
         pnames.each do |names,stats|
@@ -222,7 +222,7 @@ def big_shoe_rebounds
             end
           end
         end
-      endpra12
+      bigshoe
     end
   bigarray
   splitarray = bigarray.each_slice(2).to_a
